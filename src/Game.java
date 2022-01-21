@@ -35,7 +35,7 @@ public class Game {
                 break;
             }
             else { // проверяем, совпали ли какие-то буквы
-                String[] scannedStringArray = str.split("");  // делаем массив из символов из введенного слова типа ["k", "u", "r", "v", "a"]
+                String[] scannedStringArray = str.split("");  // делаем массив из символов из введенного слова типа ["k", "u", "r", "w", "a"]
                 String[] randomWordArray = randomWord.split("");
 
                 for (int k = 0; k < 5; k++) {
