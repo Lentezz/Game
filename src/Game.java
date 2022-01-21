@@ -22,8 +22,7 @@ public class Game {
         Map<String, String> map = arr.stream().collect(Collectors.toMap(x -> x, x -> x)); //создаем стримом мапу из списка, где ключ это слово, а значение то же самое слово из ключа
         Scanner scanner = new Scanner(System.in);
         String randomWord = arr.get(random.nextInt(arr.size() - 1)).toLowerCase(Locale.ROOT); //выбор рандомного слова и переводим в нижний регистр
-        System.out.println(randomWord);
-        System.out.println("----------------");
+
         for(int i = 0; i < 6; i++) { // 6 попыток
             String str = scanner.nextLine().toLowerCase(Locale.ROOT); // сканируем слово и переводив в нижний регистр
             if (map.get(str) == null) { // если введенное слово не из словаря
