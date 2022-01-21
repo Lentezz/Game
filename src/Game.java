@@ -24,40 +24,36 @@ public class Game {
         String randomWord = arr.get(random.nextInt(arr.size() - 1)).toLowerCase(Locale.ROOT);
         System.out.println(randomWord);
         System.out.println("----------------");
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < 6; i++) {
             String str = scanner.nextLine().toLowerCase(Locale.ROOT);
-            if(map.get(str) == null){
+            if (map.get(str) == null) {
                 System.out.println("Слова немає в словнику");
                 i--;
-                continue;
             }
-            if(str.equals(randomWord)){
+            else if (str.equals(randomWord)) {
                 System.out.println("You win!");
                 break;
             }
+            else {
+                String[] scannedStringArray = str.split("");
+                String[] randomWordArray = randomWord.split("");
 
-            String[] scannedStringArray = str.split("");
-            String[] randomWordArray = randomWord.split("");
-
-            for(int k = 0; k < 5; k++){
-                if(scannedStringArray[k].equals(randomWordArray[k])){
-                    continue;
-                }
-                for(int j = 0; j < 5; j++){
-                    if(scannedStringArray[k].equals(randomWordArray[j])){
-                        scannedStringArray[k] = "|" + scannedStringArray[k] + "|";
+                for (int k = 0; k < 5; k++) {
+                    if (scannedStringArray[k].equals(randomWordArray[k])) {
+                        scannedStringArray[k] = scannedStringArray[k].toUpperCase(Locale.ROOT);
+                    }
+                    for (int j = 0; j < 5; j++) {
+                        if (scannedStringArray[k].equals(randomWordArray[j])) {
+                            scannedStringArray[k] = "|" + scannedStringArray[k] + "|";
+                        }
                     }
                 }
-            }
-            for (int k = 0; k < 5; k++){
-                if (scannedStringArray[k].equals(randomWordArray[k])){
-                    scannedStringArray[k] = scannedStringArray[k].toUpperCase(Locale.ROOT);
+
+                Arrays.stream(scannedStringArray).forEach(System.out::print);
+                System.out.println();
+                if (i == 5) {
+                    System.out.println("Лошара, ты проиграл, загаданное слово: " + randomWord.toUpperCase(Locale.ROOT));
                 }
-            }
-            Arrays.stream(scannedStringArray).forEach(System.out::print);
-            System.out.println();
-            if(i == 5){
-                System.out.println("Лошара, ты проиграл, загаданное слово: " + randomWord.toUpperCase(Locale.ROOT));
             }
         }
     }
