@@ -3,7 +3,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
         Random random = new Random(); //енератор рандомных чисел
         List<String> arr = new ArrayList<>(); //список
@@ -19,6 +19,7 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        fr.close();
         Map<String, String> map = arr.stream().collect(Collectors.toMap(x -> x, x -> x)); //создаем стримом мапу из списка, где ключ это слово, а значение то же самое слово из ключа
         Scanner scanner = new Scanner(System.in);
         String randomWord = arr.get(random.nextInt(arr.size() - 1)).toLowerCase(Locale.ROOT); //выбор рандомного слова и переводим в нижний регистр
@@ -56,5 +57,7 @@ public class Game {
                 }
             }
         }
+    scanner.close();
+
     }
 }
